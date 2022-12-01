@@ -15,5 +15,19 @@
     "react-dom": "^18.0.0",
     "sass": "^1.26.2",
     "tailwindcss": "^1.9.6"
-  }
+  },
+  "description": "This is a full-stack Slack clone example using:",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EloiGry/chat.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/EloiGry/chat/issues"
+  },
+  "homepage": "https://github.com/EloiGry/chat#readme"
 }
