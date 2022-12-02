@@ -1,29 +1,19 @@
 import Link from 'next/link'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import UserContext from '~/lib/UserContext'
-import { addChannel, deleteChannel } from '~/lib/Store'
+import { deleteChannel } from '~/lib/Store'
 import TrashIcon from '~/components/TrashIcon'
+import MyModal from './ModalChannel'
 
 export default function Layout(props) {
   const { signOut, user, userRoles } = useContext(UserContext)
+  let [isOpen, setIsOpen] = useState(false)
 
-  const slugify = (text) => {
-    return text
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w-]+/g, '') // Remove all non-word chars
-      .replace(/--+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, '') // Trim - from end of text
+
+  function openModal() {
+    setIsOpen(true)
   }
 
-  const newChannel = async () => {
-    const slug = prompt('Please enter your name')
-    if (slug) {
-      addChannel(slugify(slug), user.id)
-    }
-  }
 
   return (
     <main className="main flex h-screen w-screen overflow-hidden">
@@ -36,11 +26,12 @@ export default function Layout(props) {
           <div className="p-2">
             <button
               className="bg-blue-900 hover:bg-blue-800 text-white py-2 px-4 rounded w-full transition duration-150"
-              onClick={() => newChannel()}
+              onClick={() => openModal()}
             >
               New Channel
             </button>
           </div>
+          <MyModal isOpen={isOpen} setIsOpen={setIsOpen}/>
           <hr className="m-2" />
           <div className="p-2 flex flex-col space-y-2">
             <h6 className="text-xs">{user?.email}</h6>
