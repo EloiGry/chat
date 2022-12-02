@@ -30,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/EloiGry/chat/issues"
   },
-  "homepage": "https://github.com/EloiGry/chat#readme"
+  "homepage": "https://github.com/EloiGry/chat#readme",
+  "devDependencies": {}
 }
